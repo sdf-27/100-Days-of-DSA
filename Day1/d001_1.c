@@ -1,33 +1,26 @@
 #include <stdio.h>
 
 int main() {
-    int n, k;
+    int n, pos, x;
     scanf("%d", &n);
 
-    int arr[n];
+    int arr[n + 1];
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
 
-    scanf("%d", &k);
+    scanf("%d", &pos);
+    scanf("%d", &x);
 
-    int comparisons = 0;
-    int found = 0;
-
-    for (int i = 0; i < n; i++) {
-        comparisons++;
-        if (arr[i] == k) {
-            printf("Found at index %d\n", i);
-            found = 1;
-            break;
-        }
+    for (int i = n; i >= pos; i--) {
+        arr[i] = arr[i - 1];
     }
 
-    if (!found) {
-        printf("Not Found\n");
-    }
+    arr[pos - 1] = x;
 
-    printf("Comparisons = %d", comparisons);
+    for (int i = 0; i <= n; i++) {
+        printf("%d ", arr[i]);
+    }
 
     return 0;
 }
